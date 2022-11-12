@@ -1,0 +1,7 @@
+C:\Users\toran\source\repos\TranslationVerification\TranslationVerification\bin\Release\net6.0-windows10.0.17763.0\publish\TranslationVerification.exe
+C:\Users\toran\source\repos\TranslationVerification\TranslationVerification\bin\Release\net6.0-windows10.0.17763.0\publish\TranslationVerification.dll
+C:\Users\toran\source\repos\TranslationVerification\TranslationVerification\bin\Release\net6.0-windows10.0.17763.0\publish\TranslationVerification.deps.json
+C:\Users\toran\source\repos\TranslationVerification\TranslationVerification\bin\Release\net6.0-windows10.0.17763.0\publish\TranslationVerification.runtimeconfig.json
+C:\Users\toran\source\repos\TranslationVerification\TranslationVerification\bin\Release\net6.0-windows10.0.17763.0\publish\TranslationVerification.pdb
+C:\Users\toran\source\repos\TranslationVerification\TranslationVerification\bin\Release\net6.0-windows10.0.17763.0\publish\Microsoft.Windows.SDK.NET.dll
+C:\Users\toran\source\repos\TranslationVerification\TranslationVerification\bin\Release\net6.0-windows10.0.17763.0\publish\WinRT.Runtime.dll

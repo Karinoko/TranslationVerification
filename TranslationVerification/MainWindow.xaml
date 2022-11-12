@@ -5,28 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TranslationVerification"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="805" Background="Black" BorderBrush="#FF900000" Foreground="White">
+        Title="Weryfikator" Height="647" Width="1127" Background="Black" BorderBrush="#FF900000" Foreground="White" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Lokalizacja folderu z plikami źródłowymi:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="240" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
         <Label Content="Lokalizacja folderu z plikami tłumaczonymi:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="240" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
-        <TextBox HorizontalAlignment="Left" Margin="255,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Height="26" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
-        <TextBox HorizontalAlignment="Left" Margin="255,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Height="26" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
-        <Button Content="Zatwierdź" HorizontalAlignment="Left" Margin="700,11,0,0" VerticalAlignment="Top" Width="84" Height="24" Background="#FFE0E0E0" BorderBrush="{x:Null}"/>
-        <Button Content="Zatwierdź" HorizontalAlignment="Left" Margin="700,37,0,0" VerticalAlignment="Top" Width="84" Height="24" BorderBrush="{x:Null}" Background="#FFE0E0E0"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,98,587,199" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="TXB_SourcePath" HorizontalAlignment="Left" Margin="255,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Height="26" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Background="#FFD6D6D6"/>
+        <TextBox x:Name="TXB_TranslatePath" HorizontalAlignment="Left" Margin="255,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Height="26" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Background="#FFD6D6D6"/>
+        <Button x:Name="BTN_ApplySource" Content="Zatwierdź" HorizontalAlignment="Left" Margin="700,11,0,0" VerticalAlignment="Top" Width="84" Height="24" Background="#FFE0E0E0" BorderBrush="{x:Null}" Click="BTN_ApplySource_Click"/>
+        <Button x:Name="BTN_ApplyTranslate" Content="Zatwierdź" HorizontalAlignment="Left" Margin="700,37,0,0" VerticalAlignment="Top" Width="84" Height="24" BorderBrush="{x:Null}" Background="#FFE0E0E0" Click="BTN_ApplyTranslate_Click"/>
+        <ListBox x:Name="SourceFilesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,102,0,0" BorderBrush="{x:Null}" Background="#FFD6D6D6" SelectionChanged="SourceFilesList_SelectionChanged" Height="169" VerticalAlignment="Top" HorizontalAlignment="Left" Width="208" MouseDoubleClick="List_MouseDoubleClick"/>
         <Label Content="Wykryte pliki źródłowe:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="203" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,275,587,22" BorderBrush="{x:Null}"/>
-        <Label Content="Wykryte pliki tłumaczenia:" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top" Width="203" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
-        <Separator HorizontalAlignment="Left" Margin="39,249,0,0" VerticalAlignment="Top" Height="13" RenderTransformOrigin="0.5,0.5" Width="361" Background="#FFC1C1C1">
-            <Separator.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1" ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Separator.RenderTransform>
-        </Separator>
-
+        <ListBox x:Name="TranslFilesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,303,0,0" BorderBrush="{x:Null}" Background="#FFD6D6D6" SelectionChanged="TranslFilesList_SelectionChanged" Height="168" VerticalAlignment="Top" HorizontalAlignment="Left" Width="208" MouseDoubleClick="List_MouseDoubleClick"/>
+        <Label Content="Wykryte pliki tłumaczenia:" HorizontalAlignment="Left" Margin="12,276,0,0" VerticalAlignment="Top" Width="204" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label Content="Nazwa:" HorizontalAlignment="Left" Margin="223,105,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label Content="Kluczy:" HorizontalAlignment="Left" Margin="223,131,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label Content="Wierszy:" HorizontalAlignment="Left" Margin="223,157,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label Content="Waga:" HorizontalAlignment="Left" Margin="223,183,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label Content="Nazwa:" HorizontalAlignment="Left" Margin="223,305,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label Content="Kluczy:" HorizontalAlignment="Left" Margin="223,331,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label Content="Wierszy:" HorizontalAlignment="Left" Margin="223,357,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label Content="Waga:" HorizontalAlignment="Left" Margin="223,383,0,0" VerticalAlignment="Top" Width="54" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label x:Name="SourceFileName" Content="" HorizontalAlignment="Left" Margin="282,105,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label x:Name="SourceFileKeys" Content="" HorizontalAlignment="Left" Margin="282,131,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label x:Name="SourceFileLines" Content="" HorizontalAlignment="Left" Margin="282,157,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label x:Name="SourceFileWage" Content="" HorizontalAlignment="Left" Margin="282,183,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label x:Name="TranslFileName" Content="" HorizontalAlignment="Left" Margin="282,305,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label x:Name="TranslFileKeys" Content="" HorizontalAlignment="Left" Margin="282,331,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label x:Name="TranslFileLines" Content="" HorizontalAlignment="Left" Margin="282,357,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Label x:Name="TranslFileWage" Content="" HorizontalAlignment="Left" Margin="282,383,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Foreground="#FFE4E4E4"/>
+        <Button Content="Weryfikuj pliki" HorizontalAlignment="Left" Margin="548,99,0,0" VerticalAlignment="Top" Width="84" Height="24" BorderBrush="{x:Null}" Background="#FFE0E0E0" Click="Button_Click_1"/>
+        <Label Content="Brakujących kluczy względem źródła:" Margin="397,131,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#FFE4E4E4" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204"/>
+        <ListBox x:Name="SourceMoreKeys" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="{x:Null}" Background="#FFD6D6D6" Margin="397,157,343,338" Tag="S" MouseDoubleClick="List_MouseDoubleClick"/>
+        <Label Content="Nadmiar kluczy względem źródła:" Margin="397,293,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#FFE4E4E4" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204"/>
+        <ListBox x:Name="TranslMoreKeys" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="397,319,343,176" BorderBrush="{x:Null}" Background="#FFD6D6D6" Tag="T" MouseDoubleClick="List_MouseDoubleClick"/>
+        <Label Content="Duplikaty w tłumaczeniu:" Margin="397,458,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#FFE4E4E4" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="204"/>
+        <ListBox x:Name="TranslDupplicate" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="397,485,343,10" BorderBrush="{x:Null}" Background="#FFD6D6D6" Tag="T" MouseDoubleClick="List_MouseDoubleClick"/>
+        <GroupBox Header="Wskazówka" Margin="10,476,0,10" HorizontalAlignment="Left" Width="372" MouseDoubleClick="TextBox_MouseDoubleClick">
+            <TextBox x:Name="Hint" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Upewnij się, że ścieżki są prawidłowe. Miej pewność, że porównywać będziesz pliki o tych samych nazwach aby uniknąć błedów programu (program wyświetli błąd o niewłaściwych plikach)." Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFC5C5C5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="11" IsEnabled="False" MouseDoubleClick="TextBox_MouseDoubleClick"/>
+        </GroupBox>
+        <TextBox x:Name="TXB_SearchKey" Margin="789,11,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Background="#FFD6D6D6" TextChanged="TXB_SearchKey_TextChanged"/>
+        <ListView x:Name="CheckSourceTransl" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="789,37,10,10" Background="#FFD6D6D6"/>
     </Grid>
 </Window>

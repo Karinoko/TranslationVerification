@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "PQKzx0aTgWhprC5YEmaZaFSqNNo7C3r+k6eS1+lTEwid4H+gvS1M+4Y81FsKJfF5/IcEzXLLzxUf0nhe532zag==",
+  "dgSpecHash": "bCjp/InYRYYaaaohIzamYFfXkLEd3Dx0GySKbD/vn9fWE9hMkg76RxzHGVNiiF+jRnup2FpHdWcwa7DGrecDFQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\toran\\source\\repos\\TranslationVerification\\TranslationVerification\\TranslationVerification.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\toran\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.27\\microsoft.windows.sdk.net.ref.10.0.17763.27.nupkg.sha512"
+  ],
   "logs": []
 }
